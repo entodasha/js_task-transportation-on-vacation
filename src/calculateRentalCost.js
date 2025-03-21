@@ -4,16 +4,23 @@
  * @return {number}
  */
 function calculateRentalCost(days) {
-  const dayPay = 40;
-  let totalAmount = days * dayPay;
+  const DAILI_RATE = 40;
+  const LONG_TERM = 7;
+  const SHORT_TERM = 3;
+  const LONG_TERM_DISCOUNT = 50;
+  const SHORT_TERM_DISCOUNT = 20;
 
-  if (days >= 7) {
-    totalAmount -= 50;
-  } else if (days >= 3) {
-    totalAmount -= 20;
+  let TOTAL_AMOUNT = DAILI_RATE * days;
+
+  if (days >= LONG_TERM) {
+    return (TOTAL_AMOUNT -= LONG_TERM_DISCOUNT);
   }
 
-  return totalAmount;
+  if (days >= SHORT_TERM) {
+    return (TOTAL_AMOUNT -= SHORT_TERM_DISCOUNT);
+  }
+
+  return TOTAL_AMOUNT;
 }
 
 module.exports = calculateRentalCost;
